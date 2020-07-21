@@ -1,0 +1,23 @@
+pipeline {
+	agent noe
+	stages {
+		stage('并行执行的 Stage') {
+			parallel {
+				stage('Stage2.1'){
+					agent {	label "myslave"	}
+					steps {
+						echo "在 agent test1 上执行的并行任务1"
+						sleep 5
+					}
+				}
+				stage('Stage2.2') {
+					agent {	label "master" }
+					steps {
+						echo "在 agent test2 上执行的并行任务2"
+						sleep 5
+					}
+				}
+			}
+		}
+	}
+}
