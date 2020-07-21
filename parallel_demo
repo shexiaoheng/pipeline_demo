@@ -1,5 +1,5 @@
 pipeline {
-	agent noe
+	agent none
 	stages {
 		stage('并行执行的 Stage') {
 			parallel {
